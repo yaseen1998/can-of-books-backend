@@ -4,6 +4,7 @@ let authorcontroller = (req,res)=>{
 
     AuthorModel.find().then(data=>{
         res.json(data)
+        console.log(AuthorModel);
     })
 }
 
