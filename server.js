@@ -23,7 +23,9 @@ app.get('/seed_data',(req,res)=>{
 
 // app.get('/get_data',authorcontroller)
 // app.get('/get_data2',getauthorcontroller)
-
+app.get("/", (req, res) => {
+    res.status(200).json({ message: "I'm working" });
+  });
 
 mongoose.connect(`mongodb+srv://yaseen_saeed:ya9981063722@cluster0.ulxvz.mongodb.net/bookstore`,{useNewUrlParser: true, useUnifiedTopology: true});
 
