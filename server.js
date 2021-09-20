@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
   });
 
 mongoose.connect(`mongodb+srv://yaseen_saeed:ya9981063722@cluster0.ulxvz.mongodb.net/bookstore`,{useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect(`${MONGO_SERVER}/bookstore`,{useNewUrlParser: true, useUnifiedTopology: true});
 
 app.get('/books',booksController);
 app.get('/books2',getbooksController);
