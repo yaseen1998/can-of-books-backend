@@ -15,4 +15,33 @@ let getbooksController= (req,res)=>{
     
 }
 
-module.exports = {booksController , getbooksController};
+const Createcontroller = (req,res)=>{
+    let createdata = req.body;
+    let newcreate = new bookmodel({
+       title: createdata.title,
+        description:createdata.description,
+        status:createdata.status,
+           email : createdata.email,
+          
+   
+    })
+    newcreate.save()
+    res.json(newcreate);
+}
+const deleteController=  (req,res)=>{
+    let id=req.params.id;
+    bookmodel.findByIdAndDelete(id,async (err,data)=>{
+        if(err){
+            res.status(500).send("an error occured");
+        }
+        let booksList= await bookmodel.find({});
+        res.json(booksList);
+           
+    })
+}
+
+
+module.exports = {booksController 
+    , getbooksController
+    ,Createcontroller
+    ,deleteController};

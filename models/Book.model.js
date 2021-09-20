@@ -3,21 +3,19 @@ const mongoose = require('mongoose')
 
 
 const bookSchema = new mongoose.Schema({
-Books:[{title:String,
+    title:String,
     description:String,
     status:String,
     email:String,
-    id:Number}],
+    
 })
 
 const bookmodel = mongoose.model('book',bookSchema)
 
 let seedbook = () =>{
     
-    let newbooks = new bookmodel({
+    let newbooks1 = new bookmodel({
         
-Books:[{
-
     title: 'The Midnight Library ',
     description:(`Between life and death there is a library,
      and within that library, the shelves go on forever. 
@@ -26,9 +24,10 @@ Books:[{
        Would you have done anything different, if you had the chance to undo your regrets?`),
        status:'  575,639 ratings  , 72,832 reviews',
        email : 'Matt Haig',
-       id:1
+      
     
-},{
+})
+let newbooks2 = new bookmodel({
 title: 'The Vanishing Half ',
     description:(`The Vignes twin sisters will always be identical. 
     But after growing up together in a small, southern black community and running away at age sixteen, 
@@ -36,24 +35,28 @@ title: 'The Vanishing Half ',
      it's everything: their families, their communities, their racial identities.`),
        status:'  442,426 ratings  ,  37,622 reviews',
        email : ' Brit Bennett',
-       id:2
+       
 
-},
-{
+})
+let newbooks3 = new bookmodel({
+
     title: 'The Invisible Life of Addie LaRue ',
         description:(`France, 1714: in a moment of desperation, 
         a young woman makes a Faustian bargain to live forever and is 
         cursed to be forgotten by everyone she meets.`),
            status:'   364,992 ratings  ,  57,829 reviews',
            email : '  V.E. Schwab',
-           id:3
-    }
-]
+          
+    })
 
     
-    })
     
-    newbooks.save()
+    
+   
+    
+    newbooks1.save()
+    newbooks2.save()
+    newbooks3.save()
 }
 
 module.exports={

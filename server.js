@@ -8,7 +8,8 @@ require("dotenv").config();
 const mongoose = require('mongoose')
 const PORT = process.env.PORT
 const MONGO_SERVER = process.env.MONGO_SERVER
-const {booksController,getbooksController} =require("./contrellor/book.contrellor")
+app.use(express.json());
+const {booksController,getbooksController , Createcontroller ,deleteController} =require("./contrellor/book.contrellor")
 
 
 const {seedbook} = require("./models/Book.model")
@@ -21,8 +22,7 @@ app.get('/seed_data',(req,res)=>{
     res.json('correct message')
 })
 
-// app.get('/get_data',authorcontroller)
-// app.get('/get_data2',getauthorcontroller)
+
 app.get("/", (req, res) => {
     res.status(200).json({ message: "I'm working" });
   });
@@ -32,7 +32,8 @@ mongoose.connect(`mongodb+srv://yaseen_saeed:ya9981063722@cluster0.ulxvz.mongodb
 
 app.get('/books',booksController);
 app.get('/books2',getbooksController);
-
+app.post('/create-book',Createcontroller);
+app.delete('/delete-book/:id',deleteController);
 
 app.listen(PORT, () => {
     console.log(`listening to port ${PORT}`);
