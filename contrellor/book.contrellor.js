@@ -47,9 +47,11 @@ const updateController=async (req,res)=>{
 
             book.save();
         });
-        let updatedBookList=await bookmodel.find({});
-        res.status(200).json(updatedBookList);
-           
+        // let updatedBookList=await bookmodel.find({});
+        // res.status(200).json(updatedBookList);
+        setTimeout(()=>{
+            bookmodel.find({}).then(data=>res.json(data));
+        },250)
     
 }
 
