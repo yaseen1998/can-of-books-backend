@@ -48,7 +48,8 @@ const updateController=async (req,res)=>{
             book.save();
         });
         let updatedBookList=await bookmodel.find({});
-        res.status(200).send(updatedBookList);
+        res.status(200).json(updatedBookList);
+           
     
 }
 
