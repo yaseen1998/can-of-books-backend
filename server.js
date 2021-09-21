@@ -9,12 +9,12 @@ const mongoose = require('mongoose')
 const PORT = process.env.PORT
 const MONGO_SERVER = process.env.MONGO_SERVER
 app.use(express.json());
-const {booksController,getbooksController , Createcontroller ,deleteController} =require("./contrellor/book.contrellor")
-
-
+const {booksController,updateController , Createcontroller ,deleteController} =require("./contrellor/book.contrellor")
 const {seedbook} = require("./models/Book.model")
 
 
+mongoose.connect(`mongodb+srv://yaseen_saeed:ya9981063722@cluster0.ulxvz.mongodb.net/bookstore`,{useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect(`${MONGO_SERVER}/bookstore`,{useNewUrlParser: true, useUnifiedTopology: true});
 
 app.get('/seed_data',(req,res)=>{
     seedbook()
@@ -26,11 +26,9 @@ app.get("/", (req, res) => {
     res.status(200).json({ message: "I'm working" });
   });
 
-mongoose.connect(`mongodb+srv://yaseen_saeed:ya9981063722@cluster0.ulxvz.mongodb.net/bookstore`,{useNewUrlParser: true, useUnifiedTopology: true});
-// mongoose.connect(`${MONGO_SERVER}/bookstore`,{useNewUrlParser: true, useUnifiedTopology: true});
 
 app.get('/books',booksController);
-app.get('/books2',getbooksController);
+app.put('/update-book/:id',updateController);
 app.post('/create-book',Createcontroller);
 app.delete('/delete-book/:id',deleteController);
 

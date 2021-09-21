@@ -7,14 +7,6 @@ let booksController= (req,res)=>{
     })  
     
 }
-let getbooksController= (req,res)=>{
-    let bookid = req.query.id
-    bookmodel.findOne({_id:bookid}).then(data=>{
-        res.json(data);
-    })  
-    
-}
-
 const Createcontroller =async (req,res)=>{
     let createdata = req.body;
     let newcreate = new bookmodel({
@@ -44,8 +36,23 @@ const deleteController=  (req,res)=>{
     })
 }
 
+const updateController=async (req,res)=>{
+        let bookID=req.params.id;
+        let updatedData=req.body;
+        bookmodel.findOne({_id:bookID}).then(book=>{
+            book.title=updatedData.title;
+            book.description=updatedData.description;
+            book.status=updatedData.status;
+            book.email=updatedData.email;
+
+            book.save();
+        });
+        let updatedBookList=await bookmodel.find({});
+        res.status(200).send(updatedBookList);
+    
+}
 
 module.exports = {booksController 
-    , getbooksController
     ,Createcontroller
-    ,deleteController};
+    ,deleteController
+   ,updateController };
