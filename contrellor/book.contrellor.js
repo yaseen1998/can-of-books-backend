@@ -15,19 +15,23 @@ let getbooksController= (req,res)=>{
     
 }
 
-const Createcontroller = (req,res)=>{
+const Createcontroller =async (req,res)=>{
     let createdata = req.body;
     let newcreate = new bookmodel({
        title: createdata.title,
         description:createdata.description,
         status:createdata.status,
            email : createdata.email,
-          
-   
     })
+    
     newcreate.save()
-    res.json(newcreate);
+
+
+    let createbook= await bookmodel.find({});
+        res.json(createbook);
 }
+
+
 const deleteController=  (req,res)=>{
     let id=req.params.id;
     bookmodel.findByIdAndDelete(id,async (err,data)=>{

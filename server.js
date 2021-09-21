@@ -13,8 +13,7 @@ const {booksController,getbooksController , Createcontroller ,deleteController} 
 
 
 const {seedbook} = require("./models/Book.model")
-// const {seedAuthor} = require("./models/author.model")
-// const {authorcontroller ,getauthorcontroller} = require("./contrellor/author.contrellor")
+
 
 
 app.get('/seed_data',(req,res)=>{
