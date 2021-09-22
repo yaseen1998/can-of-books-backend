@@ -49,6 +49,13 @@ const updateController=async (req,res)=>{
         });
         // let updatedBookList=await bookmodel.find({});
         // res.status(200).json(updatedBookList);
+        // const book = await SeederModel.findByIdAndUpdate(id, updatedData, {new:true, runValidators:true})
+        // res.status(200).json({
+        //     status:"success",
+        //     data:{
+        //         book
+        //     }
+        // })
         setTimeout(()=>{
             bookmodel.find({}).then(data=>res.json(data));
         },250)
